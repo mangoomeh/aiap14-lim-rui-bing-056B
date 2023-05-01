@@ -60,17 +60,18 @@ def encode_features(df):
     rain_encoder.fit(["No", "Yes"])
 
     # encode pressure columns
+    encoded_df = df.copy()
     pressure_columns = ["Pressure9am", "Pressure3pm"]
     for col in pressure_columns:
-        df[col] = pressure_encoder.transform(df[col])
+        encoded_df[col] = pressure_encoder.transform(encoded_df[col])
 
     # encode rain columns
     rain_columns = ["RainToday", "RainTomorrow"]
     for col in rain_columns:
-        df[col] = rain_encoder.transform(df[col])
+        encoded_df[col] = rain_encoder.transform(encoded_df[col])
 
     # one hot encoding
     ohe_columns = ["Location", "WindGustDir", "WindDir9am", "WindDir3pm", "ColourOfBoats"]
-    df = pd.get_dummies(data=df, columns=ohe_columns, dtype=int)
+    encoded_df = pd.get_dummies(data=encoded_df, columns=ohe_columns, dtype=int)
 
-    return df
+    return encoded_df
