@@ -1,11 +1,11 @@
 # AIAP 14
 
-## **a. Full name (as in NRIC) and email address.**
+## a. Full name (as in NRIC) and email address.
 
 Lim Rui Bing
 rbruibingnet@gmail.com
 
-## **b. Overview of the submitted folder and the folder structure.**
+## b. Overview of the submitted folder and the folder structure.
 
 ```
 ├── src
@@ -22,7 +22,7 @@ rbruibingnet@gmail.com
 └── run.sh
 ```
 
-## **c. Instructions for executing the pipeline and modifying any parameters.**
+## c. Instructions for executing the pipeline and modifying any parameters.
 
 To execute the pipeline:
 1. Install dependencies using `pip install -r requirements.txt`
@@ -53,4 +53,53 @@ To modify parameters:
 2. Train data is used for fitting and prediction
 2. Metric scores like `accuracy` and `f1_score` are obtained
 
-## **e. Overview of key findings from the EDA**
+## e. Overview of key findings from the EDA
+
+1. Rainfall tends to be higher when there is less sunshine
+2. Rainfall tends to be higher when there is higher humidity
+3. Rainfall tends to be higher when there is more cloud
+4. Tomorrow is less likely to rain when there is more sunshine
+5. Sunshine tends to be higher when there is less cloud
+6. Average temperatures have a smaller range of values when there is more rainfall
+7. Woodlands seem to have a greater percentage of raining on the next day
+8. Lower pressure have a greater percentage of raining on the next day
+9. Raining today have a greater percentage of raining on the next day
+
+## f. Described how the features in the dataset are processed (summarized in a table)
+
+| Feature         | How its processed                                                      |
+| --------------- | ---------------------------------------------------------------------- |
+| Date            | Converted to datetime then dropped after creating Month and Day column |
+| Location        | One-hot encoded                                                        |
+| Rainfall        | -                                                                      |
+| Evaporation     | -                                                                      |
+| Sunshine        | -                                                                      |
+| WindGustDir     | One-hot encoded                                                        |
+| WindGustSpeed   | -                                                                      |
+| WindDir9am      | One-hot encoded                                                        |
+| WindDir3pm      | One-hot encoded                                                        |
+| WindSpeed9am    | -                                                                      |
+| WindSpeed3pm    | -                                                                      |
+| Humidity9am     | -                                                                      |
+| Humidity3pm     | -                                                                      |
+| Pressure9am     | Ordinal encoded i.e. low = 0, med = 1, high = 2                        |
+| Pressure3pm     | Ordinal encoded i.e. low = 0, med = 1, high = 2                        |
+| Cloud9am        | -                                                                      |
+| Cloud3pm        | -                                                                      |
+| RainToday       | Binary encoded i.e. No = 0, Yes = 1                                    |
+| RainTomorrow    | Binary encoded i.e. No = 0, Yes = 1                                    |
+| ColourOfBoats   | One-hot encoded                                                        |
+| AverageTemp     | -                                                                      |
+| Day             | Created from Date column as day of the month                           |
+| Month           | Created from Date column as month i.e. Jan = 1, Feb = 2                |
+
+## g. Explanation of your choice of models for each machine learning task.
+
+1. Logistic regression - simplest model, if it can solve the classification problem, there is no need for more complicated models which might be a waste of computation power
+2. K Nearest Neighbors - supports non-linear solutions which is great to pair up with logistic regression
+
+## h. Evaluation of the models developed. Any metrics used in the evaluation should also be explained.
+
+1. Logistic regression
+2. K Nearest Neighbors
+
