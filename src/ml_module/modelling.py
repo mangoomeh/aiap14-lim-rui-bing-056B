@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
+from sklearn.neighbors import KNeighborsClassifier
 
 def model(df):
 
@@ -11,12 +12,12 @@ def model(df):
     X = df.loc[:, df.columns != "RainTomorrow"]
     
     # split data
-    X_train, y_train, X_test, y_test = train_test_split(X, y, random_state=20, train_size=.8)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=20, train_size=.8)
 
     # create models
     models = []
-    lr = LogisticRegression(max_iter=1000)
-    models.append(lr)
+    models.append(LogisticRegression(max_iter=5000))
+    models.append(KNeighborsClassifier(n_neighbors=15))
     
     # fit, predict and show metrics
     for model in models:
