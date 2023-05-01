@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import LabelEncoder
 
 def clean_data(df):
     
@@ -47,5 +48,29 @@ def feature_engineer(df):
 
     # drop date column
     df = df.drop(columns=["Date"])
+
+    return df
+
+def encode_features(df):
+    
+    # setup our encoder
+    pressure_encoder = LabelEncoder()
+    pressure_encoder.fit(["low", "med", "high"])
+    rain_encoder = LabelEncoder()
+    rain_encoder.fit(["No", "Yes"])
+
+    # encode pressure columns
+    pressure_columns = ["Pressure9am", "Pressure3pm"]
+    for col in pressure_columns:
+        df[col] = pressure_encoder.transform(df[col])
+
+    # encode rain columns
+    rain_columns = ["RainToday", "RainTomorrow"]
+    for col in rain_columns:
+        df[col] = rain_encoder.transform(df[col])
+
+    # one hot encoding
+    ohe_columns = ["Location", "WindGustDir", "WindDir9am", "WindDir3pm", "ColourOfBoats"]
+    df = pd.get_dummies(data=df, columns=ohe_columns, dtype=int)
 
     return df
