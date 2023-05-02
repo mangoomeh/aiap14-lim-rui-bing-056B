@@ -118,4 +118,4 @@ To modify parameters:
 - Accuracy Score: 0.86
 - F1 Score: 0.66
 
-Surprisingly, the logistic regression model performed the best when we are using the F1 score metric. F1 score is used because it takes into account both the precision and recall of the model.
+Surprisingly, the logistic regression model performed the best when we are using the F1 score metric. F1 score is used because it takes into account both the precision and recall of the model. However, the F1 scores are at best average.
