@@ -97,9 +97,25 @@ To modify parameters:
 
 1. Logistic regression - simplest model, if it can solve the classification problem, there is no need for more complicated models which might be a waste of computation power
 2. K Nearest Neighbors - supports non-linear solutions which is great to pair up with logistic regression
+3. Multi Layer Perceptron Classifier - realised the F1 scores are not that great, thus I tried to use a neural network model
+4. Random Forest - seems like MLP had a poor F1 score as well, thus tried the random forest classifier from sklearn
 
 ## h. Evaluation of the models developed. Any metrics used in the evaluation should also be explained.
 
-1. Logistic regression
-2. K Nearest Neighbors
+1. LogisticRegression
+Accuracy Score: 0.87
+F1 Score: 0.67
 
+2. KNeighborsClassifier
+Accuracy Score: 0.82
+F1 Score: 0.44
+
+3. MLPClassifier
+Accuracy Score: 0.83
+F1 Score: 0.62
+
+4. RandomForestClassifier
+Accuracy Score: 0.86
+F1 Score: 0.66
+
+Surprisingly, the logistic regression model performed the best when we are using the F1 score metric. F1 score is used because it takes into account both the precision and recall of the model.
