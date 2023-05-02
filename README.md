@@ -73,7 +73,7 @@ To modify parameters:
 | Location        | One-hot encoded                                                        |
 | Rainfall        | -                                                                      |
 | Evaporation     | -                                                                      |
-| Sunshine        | -                                                                      |
+| Sunshine        | Negative values are changed to np.nan then imputed mean                |
 | WindGustDir     | One-hot encoded                                                        |
 | WindGustSpeed   | -                                                                      |
 | WindDir9am      | One-hot encoded                                                        |
